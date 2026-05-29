@@ -1,0 +1,6 @@
+{
+  "name": "Saffa Bubur Bayi",
+  "description": "Website resmi Saffa Bubur Bayi untuk catalog menu sehat bayi, konsultasi nutrisi bertenaga AI, dan penyusunan jadwal makan mingguan bayi yang dikustomisasi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
