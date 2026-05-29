@@ -8,13 +8,13 @@ import imgNasiTim from "./assets/images/nasi_tim.png";
 // @ts-ignore
 import imgSilkyPudding from "./assets/images/silky_pudding.png";
 // @ts-ignore
-import imgBundaRania from "./assets/images/bunda_rania.png";
+import imgBundaRania from "./assets/images/bunda_rania_avatar_1780029338281.png";
 // @ts-ignore
-import imgBundaAmalia from "./assets/images/bunda_amalia.png";
+import imgBundaAmalia from "./assets/images/bunda_amalia_avatar_1780029357249.png";
 // @ts-ignore
-import imgBundaAyu from "./assets/images/bunda_ayu.png";
+import imgBundaAyu from "./assets/images/bunda_ayu_avatar_1780029379436.png";
 // @ts-ignore
-import imgQrisPayment from "./assets/images/qris_payment.png";
+import imgQrisPayment from "./assets/images/qris_payment_saffa_1780029806535.jpg";
 
 export { imgQrisPayment };
 

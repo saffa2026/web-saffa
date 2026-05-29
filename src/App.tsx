@@ -8,6 +8,7 @@ import AiConsultant from "./components/AiConsultant";
 import WeeklyMealPlanner from "./components/WeeklyMealPlanner";
 import FAQAndReviews from "./components/FAQAndReviews";
 import SaffaStands from "./components/SaffaStands";
+import BrandPhilosophy from "./components/BrandPhilosophy";
 import { Sparkles, Heart } from "lucide-react";
 
 export default function App() {
@@ -92,6 +93,9 @@ export default function App() {
 
             {/* Real Outlet Stands and WhatsApp contacts */}
             <SaffaStands />
+
+            {/* Official Branding & Logo Philosophy Highlights */}
+            <BrandPhilosophy />
 
             {/* Testimonials and Accordion FAQs */}
             <FAQAndReviews />

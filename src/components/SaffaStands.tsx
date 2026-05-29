@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { SAFFA_STANDS } from "../data";
 import { MapPin, Phone, HelpCircle, Sparkles, ShieldCheck, Heart, ExternalLink } from "lucide-react";
+// @ts-ignore
+import imgHalalIndonesia from "./Halal_Indonesia.png";
 
 export default function SaffaStands() {
   const [selectedStand, setSelectedStand] = useState<string | null>(null);
@@ -109,56 +111,88 @@ export default function SaffaStands() {
             <div className="absolute top-0 right-0 w-36 h-36 bg-rose-500/10 rounded-full blur-2xl pointer-events-none" />
             
             <div className="space-y-5 text-left z-1">
-              {(() => {
-                const active = SAFFA_STANDS.find(s => s.id === (selectedStand || "s1"));
-                if (!active) return null;
+              {/* Halal Certified Badge and Logo Header */}
+              <div className="flex items-center gap-2 border-b border-slate-700/80 pb-3">
+                <ShieldCheck className="text-emerald-400" size={18} />
+                <span className="font-bold text-xs uppercase tracking-wider font-mono text-slate-300">Sertifikasi Halal Resmi</span>
+              </div>
 
-                return (
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2 border-b border-slate-700/80 pb-3">
-                      <MapPin className="text-[#e5007d]" size={18} />
-                      <span className="font-bold text-xs uppercase tracking-wider font-mono text-slate-300">Detail Layanan Cabang</span>
+              {/* Verified Halal Logo Visual Block (Identical to User's Uploaded Image) */}
+              <div className="bg-white text-slate-800 border-2 border-[#5f1b6f] rounded-[24px] p-5 shadow-sm relative overflow-hidden select-none">
+                {/* Official Card Double Layout */}
+                <div className="flex flex-col sm:flex-row items-center gap-5">
+                  {/* Left Column: Official Logo Icon */}
+                  <div className="flex flex-col items-center shrink-0">
+                    <img 
+                      src={imgHalalIndonesia} 
+                      alt="Halal Indonesia Logo" 
+                      className="w-14 sm:w-16 h-auto object-contain max-h-[88px]"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+
+                  {/* Vertical Divider line */}
+                  <div className="hidden sm:block h-24 w-[1.5px] bg-[#5f1b6f]" />
+
+                  {/* Right Column: Code and Producer Info */}
+                  <div className="flex-1 text-left w-full space-y-3 font-sans">
+                    <div>
+                      <span className="block text-xs font-bold text-[#5f1b6f] font-sans tracking-wide">
+                        KODE HALAL
+                      </span>
+                      <span className="block text-lg sm:text-xl font-extrabold text-[#5f1b6f] font-mono tracking-wider select-all leading-none mt-1">
+                        ID21110016119481123
+                      </span>
                     </div>
 
-                    <div className="space-y-2">
-                      <h4 className="font-bold text-lg text-white leading-tight">
-                        {active.name}
-                      </h4>
-                      <p className="text-xs text-slate-300 bg-slate-800 rounded-xl p-3 border border-slate-750/50 leading-relaxed">
-                        <strong>📍 Alamat Stand:</strong> {active.location}
-                      </p>
-                      <p className="text-xs text-slate-300 leading-relaxed">
-                        {getStandDescription(active.id)}
-                      </p>
-                    </div>
+                    {/* Horizontal Divider Line */}
+                    <div className="h-[1.5px] bg-[#5f1b6f] w-full" />
 
-                    <div className="space-y-2 pt-2">
-                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block font-mono">Status & Menu Ready</span>
-                      <div className="flex flex-wrap gap-1.5">
-                        <span className="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded-md text-[10px] font-semibold">
-                          ✓ Halal BPJPH
-                        </span>
-                        <span className="px-2 py-0.5 bg-orange-500/10 text-orange-400 border border-orange-500/30 rounded-md text-[10px] font-semibold">
-                          ✓ Tanpa Pengawet
-                        </span>
-                        <span className="px-2 py-0.5 bg-pink-500/10 text-pink-400 border border-pink-500/30 rounded-md text-[10px] font-semibold">
-                          ✓ Bebas MSG
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row gap-2.5">
-                      <button
-                        onClick={() => handleCallWhatsApp(active.phone, active.name)}
-                        className="flex-1 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-md shadow-emerald-950/20"
-                      >
-                        <Phone size={13} fill="white" />
-                        <span>Pesan via WA Stand Terdekat</span>
-                      </button>
+                    <div>
+                      <span className="block text-[8px] font-bold text-[#5f1b6f] font-sans tracking-widest uppercase opacity-80 mb-0.5">
+                        DIPRODUKSI OLEH :
+                      </span>
+                      <span className="block text-base sm:text-lg font-black text-[#5f1b6f] tracking-tight uppercase leading-none">
+                        SAFFA INDO GROUP
+                      </span>
                     </div>
                   </div>
-                );
-              })()}
+                </div>
+              </div>
+
+              {/* Halal Guarantee Points */}
+              <div className="bg-slate-800/40 p-4 rounded-2xl border border-slate-700/50 space-y-3">
+                <p className="text-xs text-emerald-200/90 font-extrabold flex items-center gap-1.5 uppercase font-mono tracking-wider">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  Jaminan Kebersihan & Gizi Saffa:
+                </p>
+                <ul className="text-[11px] text-slate-300 space-y-2 leading-relaxed font-sans">
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-400 text-xs mt-0.5">✓</span>
+                    <span><strong>100% Produk Halal:</strong> Seluruh daging ayam, sapi, dan ikan salmon dari supplier bersertifikat halal resmi MUI.</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-400 text-xs mt-0.5">✓</span>
+                    <span><strong>Proses Masak Islami:</strong> Diproses secara bersih, suci, dan higienis mengikuti syariat Islam demi keberkahan tiap suap.</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-400 text-xs mt-0.5">✓</span>
+                    <span><strong>Bahan Segar Berkualitas:</strong> Tanpa tambahan MSG, minyak non-halal, atau bahan pengawet sintetis kimia apa pun.</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Quick Stand Consultation WhatsApp button as fallback */}
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={handleCallPartnership}
+                  className="w-full py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-md shadow-emerald-950/20"
+                >
+                  <ShieldCheck size={14} className="text-white" />
+                  <span>Cek Keaslian Sertifikat via Kemitraan</span>
+                </button>
+              </div>
             </div>
 
             {/* Franchise Partnership Promotion Banner */}

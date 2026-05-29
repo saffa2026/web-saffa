@@ -11,47 +11,6 @@ interface WeeklyMealPlannerProps {
 const DAYS = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"] as const;
 const TIMES = ["Pagi"] as const;
 
-// Mathematically correct CRC16-CCITT algorithm for EMVCo/QRIS compliance
-function calculateCRC16(str: string): string {
-  let crc = 0xFFFF;
-  for (let c = 0; c < str.length; c++) {
-    const code = str.charCodeAt(c);
-    crc ^= (code << 8);
-    for (let i = 0; i < 8; i++) {
-      if ((crc & 0x8000) !== 0) {
-        crc = (crc << 1) ^ 0x1021;
-      } else {
-        crc = crc << 1;
-      }
-    }
-  }
-  crc = crc & 0xFFFF;
-  return crc.toString(16).toUpperCase().padStart(4, "0");
-}
-
-// Generate valid, scanable QRIS payload with optional amount
-function generateQrisPayload(amount?: number): string {
-  let tag54 = "";
-  if (amount && amount > 0) {
-    const amountStr = Math.round(amount).toString();
-    tag54 = "54" + amountStr.length.toString().padStart(2, "0") + amountStr;
-  }
-
-  const base = "000201010211" +
-               "26640015ID.CO.QRIS.WWW01159360000900000010215ID10222195033670303UMI" +
-               "51450015ID.CO.QRIS.WWW0215ID10222195033670303UMI" +
-               "52045812" +
-               "5303360" +
-               tag54 +
-               "5802ID" +
-               "5916SAFFA BUBUR BAYI" +
-               "6013TANJUNGPINANG" +
-               "610529124" +
-               "6304";
-
-  return base + calculateCRC16(base);
-}
-
 export default function WeeklyMealPlanner({ lastSelectedMenuId, clearLastSelectedMenuId }: WeeklyMealPlannerProps) {
   // Navigation tab for planner mode: Custom Setup vs Subscription Package
   const [activeTab, setActiveTab] = useState<"custom" | "package">("custom");
@@ -78,7 +37,6 @@ export default function WeeklyMealPlanner({ lastSelectedMenuId, clearLastSelecte
   const [selectedStandId, setSelectedStandId] = useState("s1");
   const [copySuccess, setCopySuccess] = useState(false);
   const [showQris, setShowQris] = useState(false);
-  const [qrisView, setQrisView] = useState<"dynamic" | "static" | "banner">("dynamic");
 
   // States for delivery fee estimation (Maxim/Gojek-based)
   const [deliveryDistance, setDeliveryDistance] = useState<number>(3); // default to 3 KM
@@ -816,108 +774,50 @@ export default function WeeklyMealPlanner({ lastSelectedMenuId, clearLastSelecte
                   </button>
 
                   {showQris && (
-                    <div className="mt-2.5 bg-slate-50 border border-slate-150 rounded-2xl p-3 space-y-3 animate-fade-in text-center">
-                      <div className="flex items-center justify-center p-0.5 bg-slate-200 rounded-lg text-[9px] font-bold">
-                        <button
-                          type="button"
-                          onClick={() => setQrisView("dynamic")}
-                          className={`flex-1 py-1 px-1 rounded-md transition ${qrisView === "dynamic" ? "bg-white text-[#e5007d] shadow-xs" : "text-slate-600"}`}
-                        >
-                          Auto Nominal
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => setQrisView("static")}
-                          className={`flex-1 py-1 px-1 rounded-md transition ${qrisView === "static" ? "bg-white text-[#e5007d] shadow-xs" : "text-slate-600"}`}
-                        >
-                          Bebas Nominal
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => setQrisView("banner")}
-                          className={`flex-1 py-1 px-1 rounded-md transition ${qrisView === "banner" ? "bg-white text-[#e5007d] shadow-xs" : "text-slate-600"}`}
-                        >
-                          Banner BNI
-                        </button>
-                      </div>
-
+                    <div className="mt-2.5 bg-slate-50 border border-slate-150 rounded-2xl p-4 space-y-3 animate-fade-in text-center">
                       <div className="bg-white p-3 rounded-xl border border-slate-200 flex flex-col items-center justify-center">
-                        {qrisView === "banner" ? (
-                          <div className="relative w-48 rounded-lg overflow-hidden border border-slate-100 shadow-xs bg-white p-1">
-                            <img
-                              src={imgQrisPayment}
-                              alt="QRIS Banner Official"
-                              className="w-full h-auto object-cover"
-                              referrerPolicy="no-referrer"
-                            />
-                            <p className="text-[8px] text-slate-400 mt-1">Official Banner Merchant</p>
-                          </div>
-                        ) : (
-                          <div className="space-y-2">
-                            <div className="relative w-44 h-44 mx-auto border border-slate-150 p-1.5 rounded-lg bg-white shadow-xs">
-                              <img
-                                src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(
-                                  generateQrisPayload(qrisView === "dynamic" ? displayTotalCost : 0)
-                                )}`}
-                                alt="Standard Scanable QRIS Saffa"
-                                className="w-full h-full object-contain"
-                                referrerPolicy="no-referrer"
-                              />
-                            </div>
-                            <div>
-                              <p className="font-bold text-xs uppercase text-slate-800">SAFFA BUBUR BAYI</p>
-                              <p className="text-[9px] font-mono text-slate-400">NMID ID1022219503367</p>
-                            </div>
-                          </div>
-                        )}
+                        <div className="relative w-64 rounded-lg overflow-hidden border border-slate-100 shadow-xs bg-white p-1">
+                          <img
+                            src={imgQrisPayment}
+                            alt="QRIS Saffa Bubur Bayi Resmi"
+                            className="w-full h-auto object-cover"
+                            referrerPolicy="no-referrer"
+                          />
+                        </div>
+                        <div className="mt-2 text-center">
+                          <p className="font-bold text-[9px] text-slate-400 font-mono tracking-wider">OFFICIAL BNI MERCHANT</p>
+                          <p className="font-extrabold text-xs text-slate-800 tracking-tight font-sans">NMID: ID1022219503367</p>
+                        </div>
                       </div>
 
-                      <div className="text-left bg-white p-2.5 rounded-xl border border-slate-150 space-y-1">
+                      <div className="text-left bg-white p-3 rounded-xl border border-slate-150 space-y-2">
+                        <div className="flex items-center justify-between border-b border-dashed border-slate-100 pb-2">
+                          <span className="text-[10px] text-slate-500 font-medium">Total yang Harus Dibayar:</span>
+                          <strong className="text-[#e5007d] font-mono font-extrabold text-sm">
+                            Rp {displayTotalCost.toLocaleString("id-ID")}
+                          </strong>
+                        </div>
                         <p className="font-bold text-[10px] text-slate-700 font-sans tracking-wide">
-                          {qrisView === "dynamic" 
-                            ? "✅ QRIS Otomatis Terisi Nominal:" 
-                            : qrisView === "static" 
-                            ? "✍️ QRIS Bebas Ketik Nominal:" 
-                            : "🏷️ Banner Resmi QRIS Saffa:"}
+                          ✍️ Petunjuk Pembayaran:
                         </p>
-                        <ol className="list-decimal list-inside text-[9px] text-slate-500 space-y-1 leading-relaxed font-sans">
-                          {qrisView === "dynamic" && (
-                            <>
-                              <li>Scan QR Code di atas menggunakan m-Banking atau e-Wallet Bunda.</li>
-                              <li>Nominal <strong className="text-[#e5007d]">Rp {displayTotalCost.toLocaleString("id-ID")}</strong> akan otomatis terisi secara instan tanpa perlu diketik manual!</li>
-                              <li>Lakukan pembayaran, lalu kirim bukti transfer ke WhatsApp Saffa.</li>
-                            </>
-                          )}
-                          {qrisView === "static" && (
-                            <>
-                              <li>Scan QR Code di atas lewat e-Wallet atau m-Banking Anda.</li>
-                              <li>Ketik nominal bayar manual sebesar: <strong className="text-slate-800">Rp {displayTotalCost.toLocaleString("id-ID")}</strong>.</li>
-                              <li>Kirim bukti pembayaran ke WhatsApp setelah konfirmasi.</li>
-                            </>
-                          )}
-                          {qrisView === "banner" && (
-                            <>
-                              <li>Ini stiker banner resmi Saffa Bubur Bayi dari BNI Merchant.</li>
-                              <li>Jika scanner HP Bunda kesulitan membaca stiker gambar di atas, beralihlah ke tab **Auto Nominal** atau **Bebas Nominal** untuk mendapatkan kode QR beresolusi super tajam dan presisi!</li>
-                            </>
-                          )}
+                        <ol className="list-decimal list-inside text-[9px] text-slate-500 space-y-1.5 leading-relaxed font-sans">
+                          <li>Buka aplikasi m-Banking (BCA, BNI, Mandiri, dll) atau e-Wallet (Gojek, OVO, Dana, LinkAja, ShopeePay).</li>
+                          <li>Scan stiker QRIS resmi di atas atau unggah gambar yang telah diunduh.</li>
+                          <li>Ketik jumlah nominal transfer tepat sebesar <strong className="text-slate-800">Rp {displayTotalCost.toLocaleString("id-ID")}</strong>.</li>
+                          <li>Selesaikan pembayaran, lalu simpan bukti transaksi aman.</li>
+                          <li>Kirim bukti transfer tersebut ke WhatsApp Admin Saffa setelah Bunda klik checkout pesanan.</li>
                         </ol>
                       </div>
 
-                      <div className="flex items-center justify-center gap-3">
+                      <div className="flex items-center justify-center">
                         <a
-                          href={qrisView === "banner" 
-                            ? imgQrisPayment 
-                            : `https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(
-                                generateQrisPayload(qrisView === "dynamic" ? displayTotalCost : 0)
-                              )}`
-                          }
-                          download="QRIS_Saffa_Bubur_Bayi.png"
+                          href={imgQrisPayment}
+                          download="QRIS_Saffa_Bubur_Bayi.jpg"
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-1 text-[9px] font-bold text-red-600 hover:text-red-700 hover:underline transition cursor-pointer"
+                          className="inline-flex items-center gap-1.5 text-[10px] font-bold text-red-600 hover:text-red-700 hover:underline transition cursor-pointer"
                         >
-                          📥 Unduh Gambar QRIS
+                          📥 Unduh QRIS Asli
                         </a>
                       </div>
                     </div>

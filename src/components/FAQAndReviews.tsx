@@ -94,7 +94,10 @@ export default function FAQAndReviews() {
                       src={test.avatar}
                       alt={test.name}
                       referrerPolicy="no-referrer"
-                      className="w-10 h-10 rounded-full object-cover border border-orange-100 bg-orange-50 shrink-0"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(test.name)}&backgroundColor=e5007d,74b71b,f43f5e`;
+                      }}
+                      className="w-10 h-10 rounded-full object-cover border border-rose-100 bg-rose-50 shrink-0 shadow-2xs"
                     />
                     <div>
                       <h5 className="font-bold text-xs text-slate-800 leading-tight">
