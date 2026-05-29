@@ -377,7 +377,7 @@ export default function MenuCatalog({ onAddToPlanner }: MenuCatalogProps) {
 
                 {/* Ingredients details */}
                 <div className="space-y-2">
-                  <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider font-mono">Komparasi Bahan Alami (100% Organik):</h4>
+                  <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider font-mono">Komparasi Bahan Alami (100% Beras Premium):</h4>
                   <ul className="grid grid-cols-2 gap-2 text-xs text-slate-700 font-sans">
                     {selectedProduct.ingredients.map((ing, i) => (
                       <li key={i} className="flex items-center gap-2 bg-slate-50 p-2.5 rounded-lg border border-slate-100">

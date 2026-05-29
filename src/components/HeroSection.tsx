@@ -42,7 +42,7 @@ export default function HeroSection({ onExploreMenu, onConsultAi, onPlanMeal }: 
               </h1>
               
               <p className="text-slate-500 text-base sm:text-lg leading-relaxed max-w-xl font-sans font-light">
-                Bubur bayi organik segar dari Saffa Tanjungpinang. Dimasak steril setiap subuh dengan standar nutrisi seimbang untuk tumbuh kembang optimal si kecil.
+                Bubur bayi beras premium segar dari Saffa Tanjungpinang. Dimasak steril setiap subuh dengan standar nutrisi seimbang untuk tumbuh kembang optimal si kecil.
               </p>
             </div>
 
@@ -50,7 +50,7 @@ export default function HeroSection({ onExploreMenu, onConsultAi, onPlanMeal }: 
             <div className="grid grid-cols-2 gap-y-3 gap-x-4 max-w-md pt-1">
               <div className="flex items-center gap-2 text-xs text-slate-600 font-medium">
                 <CheckCircle2 size={15} className="text-slate-800 shrink-0" />
-                <span>100% Bahan Organik</span>
+                <span>100% Beras Premium</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-slate-600 font-medium">
                 <CheckCircle2 size={15} className="text-slate-800 shrink-0" />

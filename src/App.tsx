@@ -64,8 +64,8 @@ export default function App() {
                   
                   <div className="p-6 bg-[#faf9f6]/40 rounded-xl border border-slate-150 space-y-3 text-left">
                     <span className="text-3xl block">🌾</span>
-                    <h5 className="font-bold text-slate-800 text-sm uppercase tracking-wide">100% Organik</h5>
-                    <p className="text-xs text-slate-500 leading-relaxed">Memakai beras merah, putih, kacang, dan sayur segar langsung dari perkebunan organik bersertifikat.</p>
+                    <h5 className="font-bold text-slate-800 text-sm uppercase tracking-wide">100% Beras Premium</h5>
+                    <p className="text-xs text-slate-500 leading-relaxed">Memakai beras merah premium, beras putih premium, kacang, dan sayur segar pilihan dari perkebunan bersertifikat.</p>
                   </div>
 
                   <div className="p-6 bg-[#faf9f6]/40 rounded-xl border border-slate-150 space-y-3 text-left">

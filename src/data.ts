@@ -91,7 +91,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: "gurih",
     ageGroups: ["6-8"],
     price: 7000,
-    ingredients: ["Beras Putih Organik Saffa", "Protein Pilihan Hari Ini (Sapi/Ayam/Ikan/Telur)", "Sayur Segar Harian Musiman", "Kaldu Murni Home-made Bebas MSG"],
+    ingredients: ["Beras Putih Premium Saffa", "Protein Pilihan Hari Ini (Sapi/Ayam/Ikan/Telur)", "Sayur Segar Harian Musiman", "Kaldu Murni Home-made Bebas MSG"],
     nutrients: {
       calories: 125,
       protein: 5.8,
@@ -99,7 +99,7 @@ export const MENU_ITEMS: MenuItem[] = [
       carbs: 17.2,
       vitamins: ["Zat Besi", "Kalsium", "Vitamin A", "Fosfor"]
     },
-    benefits: "Bubur saring bertekstur sangat halus dari beras putih organik dengan pilihan lauk pauk segar yang berganti setiap hari sesuai ketersediaan stok terbaik.",
+    benefits: "Bubur saring bertekstur sangat halus dari beras putih premium dengan pilihan lauk pauk segar yang berganti setiap hari sesuai ketersediaan stok terbaik.",
     rating: 4.9,
     imageUrl: imgBerasPutih,
     isPopular: true
@@ -110,7 +110,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: "gurih",
     ageGroups: ["6-8"],
     price: 7000,
-    ingredients: ["Beras Merah & Beras Putih Organik Saffa", "Protein Pilihan Hari Ini (Sapi/Ayam/Ikan/Telur)", "Sayur Segar Harian Musiman", "Kaldu Murni Home-made Bebas MSG"],
+    ingredients: ["Beras Merah & Beras Putih Premium Saffa", "Protein Pilihan Hari Ini (Sapi/Ayam/Ikan/Telur)", "Sayur Segar Harian Musiman", "Kaldu Murni Home-made Bebas MSG"],
     nutrients: {
       calories: 130,
       protein: 6.0,
@@ -118,7 +118,7 @@ export const MENU_ITEMS: MenuItem[] = [
       carbs: 18.5,
       vitamins: ["Tinggi Serat Alami", "Zat Besi Heme", "Zinc", "Vitamin B1"]
     },
-    benefits: "Kombinasi kaya serat dari beras merah dan beras putih organik, berpasangan with lauk-pauk bergizi seimbang yang bervariasi setiap harinya.",
+    benefits: "Kombinasi kaya serat dari beras merah premium dan beras putih premium, berpasangan dengan lauk-pauk bergizi seimbang yang bervariasi setiap harinya.",
     rating: 4.8,
     imageUrl: imgBerasMerah,
     isPopular: true
@@ -129,7 +129,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: "spesial",
     ageGroups: ["8-11", "12+"],
     price: 9000,
-    ingredients: ["Beras Organik Khusus Tim", "Protein Cincang Harian (Salmon/Daging/Ayam Kampung)", "Variasi Sayur Cincang Segar Harian", "Sari Bone Broth Saffa"],
+    ingredients: ["Beras Premium Khusus Tim", "Protein Cincang Harian (Salmon/Daging/Ayam Kampung)", "Variasi Sayur Cincang Segar Harian", "Sari Bone Broth Saffa"],
     nutrients: {
       calories: 160,
       protein: 8.5,

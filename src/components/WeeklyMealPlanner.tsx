@@ -780,7 +780,7 @@ export default function WeeklyMealPlanner({ lastSelectedMenuId, clearLastSelecte
                           <img
                             src={imgQrisPayment}
                             alt="QRIS Saffa Bubur Bayi Resmi"
-                            className="w-full h-auto object-cover"
+                            className="w-full h-auto block rounded-lg rounded-t-xl"
                             referrerPolicy="no-referrer"
                           />
                         </div>

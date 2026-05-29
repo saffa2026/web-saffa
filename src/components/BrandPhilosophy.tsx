@@ -78,7 +78,7 @@ export default function BrandPhilosophy() {
                   <div className="h-2 w-full rounded-full bg-[#74b71b]" />
                   <h5 className="font-extrabold text-xs text-slate-800">Daun Hijau Alami</h5>
                   <p className="text-[10px] text-slate-500 leading-relaxed font-sans">
-                    Representasi komitmen Saffa menyajikan bahan organik, sayur segar harian, dan jaminan nutrisi murni tanpa tambahan pengawet buatan.
+                    Representasi komitmen Saffa menyajikan bahan beras premium pilhan, sayur segar harian, dan jaminan nutrisi murni tanpa tambahan pengawet buatan.
                   </p>
                 </div>
 
