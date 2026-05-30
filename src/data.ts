@@ -14,7 +14,7 @@ import imgBundaAmalia from "./assets/images/bunda_amalia_avatar_1780029357249.pn
 // @ts-ignore
 import imgBundaAyu from "./assets/images/bunda_ayu_avatar_1780029379436.png";
 // @ts-ignore
-import imgQrisPayment from "./assets/images/qris_payment_saffa_1780029806535.jpg";
+import imgQrisPayment from "./assets/images/qris_payment_saffa_1780029806535.png";
 
 export { imgQrisPayment };
 
