@@ -15,8 +15,10 @@ import imgBundaAmalia from "./assets/images/bunda_amalia_avatar_1780029357249.pn
 import imgBundaAyu from "./assets/images/bunda_ayu_avatar_1780029379436.png";
 // @ts-ignore
 import imgQrisPayment from "./assets/images/qris_payment_saffa_1780029806535.png";
+// @ts-ignore
+import imgDrGizi from "./assets/images/dr_gizi_ai_avatar_1780118511311.png";
 
-export { imgQrisPayment };
+export { imgQrisPayment, imgDrGizi };
 
 export const AGE_GROUPS: BabyAgeGroup[] = [
   {

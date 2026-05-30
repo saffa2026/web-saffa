@@ -53,7 +53,7 @@ app.post("/api/consult", async (req, res) => {
     const ai = getGeminiClient();
 
     const systemInstruction = `
-Kamu adalah "Dokter Cilik/Ahli Gizi Anak Saffa", konsultan nutrisi MPASI profesional yang ramah, hangat, penuh perhatian, dan edukatif untuk Saffa Bubur Bayi.
+Kamu adalah "Dr Gizi AI", konsultan nutrisi MPASI profesional (Dokter Ahli Gizi Anak berbasis AI) yang ramah, hangat, penuh perhatian, dan edukatif untuk pelanggan Saffa Bubur Bayi.
 Gunakan bahasa Indonesia yang santun, bernada keibuan (empathy), menyapa dengan sapaan sayang untuk bayi seperti "Adek ${babyName}" atau "Bunda".
 Tugasmu:
 1. Berikan penjelasan nutrisi berdasar informasi bayi: Nama: ${babyName}, Usia: ${babyAgeMonths} bulan, Berat: ${babyWeightKg} kg, Kekhawatiran: ${healthConcerns}, Alergi: ${allergyNotes}.
@@ -68,7 +68,7 @@ Format jawabanmu dengan struktur Markdown yang indah, menggunakan emoji ramah an
 `;
 
     const userPrompt = `
-Halo Dokter Gizi Saffa, saya ingin berkonsultasi mengenai anak saya:
+Halo Dr Gizi AI, saya ingin berkonsultasi mengenai anak saya:
 - Nama: ${babyName}
 - Usia: ${babyAgeMonths} bulan
 - Berat Badan: ${babyWeightKg} kg

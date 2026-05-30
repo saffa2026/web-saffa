@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, FormEvent } from "react";
 import { ChatMessage, ConsultPayload } from "../types";
 import { MessageSquare, Sparkles, Send, RefreshCw, User, HelpCircle, Heart, ShieldCheck } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import { imgDrGizi } from "../data";
 
 export default function AiConsultant() {
   const [babyName, setBabyName] = useState<string>("");
@@ -60,7 +61,7 @@ export default function AiConsultant() {
       });
 
       if (!response.ok) {
-        throw new Error("Gagal terhubung dengan server medis Saffa.");
+        throw new Error("Gagal terhubung dengan server medis Dr Gizi AI.");
       }
 
       const data = await response.json();
@@ -168,10 +169,10 @@ export default function AiConsultant() {
             <span>AI Pediatric Advisor</span>
           </div>
           <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
-            Konsultasi Gizi Saffa AI
+            Konsultasi Gizi Dr Gizi AI
           </h2>
           <p className="text-slate-500 text-xs sm:text-sm">
-            Dapatkan rekomendasi variasi MPASI terpersonalisasi untuk si kecil secara instan, ramah, dan mendetail langsung dari asisten kecerdasan medis kami.
+            Dapatkan rekomendasi variasi MPASI terpersonalisasi untuk si kecil secara instan, ramah, dan mendetail langsung dari asisten kecerdasan dokter anak berbasis AI kami.
           </p>
         </div>
 
@@ -181,12 +182,17 @@ export default function AiConsultant() {
           {/* Header Bar */}
           <div className="bg-slate-900 p-5 text-white flex items-center justify-between shadow-xs">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/10 relative">
-                <span className="text-lg">👶</span>
+              <div className="w-10 h-10 rounded-full bg-white/10 overflow-hidden backdrop-blur-md flex items-center justify-center border border-white/10 relative">
+                <img
+                  src={imgDrGizi}
+                  alt="Dr Gizi AI"
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
                 <span className="absolute bottom-[-1px] right-[-1px] w-2.5 h-2.5 bg-emerald-500 border-2 border-slate-900 rounded-full" />
               </div>
               <div className="text-left">
-                <h4 className="font-bold text-xs tracking-wider uppercase font-mono">Dr. Saffa AI (Nutrisionis)</h4>
+                <h4 className="font-bold text-xs tracking-wider uppercase font-mono">Dr. Gizi AI (Nutrisionis & MPASI)</h4>
                 <p className="text-[9px] text-[#e5007d] font-mono font-bold tracking-wide">Konsultasi Resep Gizi Seimbang & Aman</p>
               </div>
             </div>
@@ -300,7 +306,7 @@ export default function AiConsultant() {
 
               <div className="p-3 bg-emerald-500/[0.03] border border-emerald-500/10 text-slate-600 text-[10px] rounded-lg flex items-center gap-2.5 leading-relaxed font-sans">
                 <ShieldCheck size={16} className="text-emerald-500 shrink-0" />
-                <span>Dokter Cilik Gizi AI diprogram terkalibrasi dengan kurva berat badan & rujukan nutrisi Kemenkes RI.</span>
+                <span>Dr Gizi AI diprogram terkalibrasi dengan kurva berat badan & rujukan nutrisi Kemenkes RI.</span>
               </div>
 
               <button
@@ -325,7 +331,7 @@ export default function AiConsultant() {
                   >
                     {/* Speaker indicator label */}
                     <span className="text-[9px] font-mono text-slate-400 mb-1 px-1">
-                      {msg.sender === "user" ? babyName : "Dr. Saffa"} • {msg.timestamp}
+                      {msg.sender === "user" ? babyName : "Dr. Gizi AI"} • {msg.timestamp}
                     </span>
 
                     {/* Chat Bubble with gorgeous markdown parsing */}
@@ -346,7 +352,7 @@ export default function AiConsultant() {
                 {/* Thinking loader */}
                 {isLoading && (
                   <div className="flex flex-col items-start">
-                    <span className="text-[9px] font-mono text-slate-400 mb-1">Dr. Saffa sedang menganalisis gizi...</span>
+                    <span className="text-[9px] font-mono text-slate-400 mb-1">Dr. Gizi AI sedang menganalisis gizi...</span>
                     <div className="bg-[#faf9f6] border border-slate-250/60 p-4 rounded-2xl rounded-tl-none flex items-center gap-3 max-w-[200px]">
                       <div className="flex gap-1">
                         <span className="w-2.5 h-2.5 rounded-full bg-[#e5007d] animate-bounce delay-0" />
