@@ -6,7 +6,7 @@ import imgBerasMerah from "./assets/images/bubur_merah.png";
 // @ts-ignore
 import imgNasiTim from "./assets/images/nasi_tim.png";
 // @ts-ignore
-import imgSilkyPudding from "./assets/images/silky_pudding.png";
+import imgSilkyPudding from "./assets/images/silky_pudding_solid_1780029099585.png";
 // @ts-ignore
 import imgBundaRania from "./assets/images/bunda_rania_avatar_1780029338281.png";
 // @ts-ignore
