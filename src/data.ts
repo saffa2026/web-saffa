@@ -1,10 +1,10 @@
 import { BabyAgeGroup, MenuItem, FAQItem, Testimonial, SaffaStand } from "./types";
 // @ts-ignore
-import imgBerasPutih from "./assets/images/bubur_putih.png";
+import imgBerasPutih from "./assets/images/bubur_putih_saffa_1780027754917.png";
 // @ts-ignore
-import imgBerasMerah from "./assets/images/bubur_merah.png";
+import imgBerasMerah from "./assets/images/bubur_merah_saffa_1780027773530.png";
 // @ts-ignore
-import imgNasiTim from "./assets/images/nasi_tim.png";
+import imgNasiTim from "./assets/images/nasi_tim_saffa_real_1780027809900.png";
 // @ts-ignore
 import imgSilkyPudding from "./assets/images/silky_pudding_solid_1780029099585.png";
 // @ts-ignore
