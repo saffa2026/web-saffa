@@ -95,7 +95,7 @@ export default function Footer() {
 
         {/* copyright */}
         <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
-          <p>© 2026 Saffa Bubur Bayi (Saffa Baby Food Corp). Hak Cipta Dilindungi.</p>
+          <p>© 2026 Saffa Bubur Bayi (PT SAFFA INDO GROUP). Hak Cipta Dilindungi.</p>
           <p className="flex items-center gap-1">
             Dibuat penuh kasih sayang untuk tumbuh kembang anak sehat 
             <Heart size={10} className="fill-red-500 text-red-500 animate-pulse" />
