@@ -184,8 +184,8 @@ export default function WeeklyMealPlanner({ lastSelectedMenuId, clearLastSelecte
       const typeLabel = pkgType === "halus" ? "Bubur Halus Saring (6+ Bln)" : "Nasi Tim Kasar (8+ Bln)";
       const scheduleLabel = "Pagi Saja (1 cup / hari)";
       
-      let text = `*FORM PENDAFTARAN BERLANGGANAN SAPFA*\n`;
-      text += `_MPASI Premium Sehat & Bergizi - Resmi BPJPH sejak 2022_\n\n`;
+      let text = `*FORM PENDAFTARAN BERLANGGANAN SAFFA*\n`;
+      text += `_MPASI MASA KINI - Resmi BPJPH sejak 2022_\n\n`;
       text += `Nama Bunda: ${motherName || "-"}\n`;
       text += `Nama Si Kecil: ${babyName || "-"}\n`;
       text += `Alamat Pengantaran: ${address || "-"}\n`;
