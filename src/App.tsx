@@ -18,11 +18,31 @@ export default function App() {
   // Bridging: when mother taps "Atur Jadwal" in the catalog
   const handleAddToPlanner = (menuItemId: string) => {
     setLastSelectedMenuId(menuItemId);
-    setActiveTab("planner"); // Redirect tab to the weekly meal scheduler
+    setActiveTab("hero"); // Redirect to the homepage where the planner is embedded
+    setTimeout(() => {
+      const el = document.getElementById("jadwal-belanja-section");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 150);
   };
 
   const handleClearLastSelectedMenu = () => {
     setLastSelectedMenuId(null);
+  };
+
+  const handleTabChange = (tabId: string) => {
+    if (tabId === "planner") {
+      setActiveTab("hero");
+      setTimeout(() => {
+        const el = document.getElementById("jadwal-belanja-section");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 150);
+    } else {
+      setActiveTab(tabId);
+    }
   };
 
   return (
@@ -37,7 +57,7 @@ export default function App() {
       </div>
 
       {/* Main Navbar */}
-      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Navbar activeTab={activeTab} setActiveTab={handleTabChange} />
 
       {/* Dynamic Main Body Content Router */}
       <main className="flex-1">
@@ -48,8 +68,21 @@ export default function App() {
             <HeroSection
               onExploreMenu={() => setActiveTab("menu")}
               onConsultAi={() => setActiveTab("bot")}
-              onPlanMeal={() => setActiveTab("planner")}
+              onPlanMeal={() => {
+                const el = document.getElementById("jadwal-belanja-section");
+                if (el) {
+                  el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+              }}
             />
+            
+            {/* Interactive Meal Planner & Subscription Form (Jadwal Belanja) on Front Page */}
+            <div id="jadwal-belanja-section" className="scroll-mt-20 border-b border-orange-100 bg-white">
+              <WeeklyMealPlanner
+                lastSelectedMenuId={lastSelectedMenuId}
+                clearLastSelectedMenuId={handleClearLastSelectedMenu}
+              />
+            </div>
             
             {/* Highlight Section: Why Saffa? */}
             <div className="py-16 bg-white border-t border-slate-100 text-center select-none">
