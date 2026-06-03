@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { Sparkles, Calendar, ChevronRight, CheckCircle2 } from "lucide-react";
 import SaffaLogo from "./SaffaLogo";
+// @ts-ignore
+import imgBundaRania from "../assets/images/bunda_rania_avatar_1780029338281.png";
+// @ts-ignore
+import imgHeroFood from "../assets/images/nasi_tim_saffa_real_1780027809900.png";
 
 interface HeroSectionProps {
   onExploreMenu: () => void;
@@ -10,7 +14,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onExploreMenu, onConsultAi, onPlanMeal }: HeroSectionProps) {
   const [imgError, setImgError] = useState(false);
-  const heroImgUrl = "/src/assets/images/saffa_hero.png";
+  const heroImgUrl = imgHeroFood;
 
   return (
     <div className="relative overflow-hidden bg-[#faf9f6] pb-16 pt-8 sm:pt-12 border-b border-[#f3eee7]">
@@ -107,10 +111,10 @@ export default function HeroSection({ onExploreMenu, onConsultAi, onPlanMeal }: 
           {/* Right Area: Generated Illustrative Art */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center">
             <div className="relative w-full max-w-[400px]">
-              
-              {/* Cute Badge with brand logo */}
-              <div className="absolute -top-6 -right-6 z-10 scale-85 sm:scale-90 shadow-lg">
-                <SaffaLogo variant="brand" />
+                        {/* Elegant, Non-clashing Compact Badge */}
+              <div className="absolute -top-4 -right-4 z-10 bg-white border border-rose-100 px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-1.5 scale-90 sm:scale-100">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#e5007d] animate-pulse" />
+                <span className="text-[9px] font-extrabold text-slate-800 uppercase tracking-widest font-mono">MITRA MPASI RESMI</span>
               </div>
 
               {/* Main Mascot / Illustration Display in compliant img styling */}
@@ -146,13 +150,21 @@ export default function HeroSection({ onExploreMenu, onConsultAi, onPlanMeal }: 
                 )}
               </div>
 
-              {/* Floating review card */}
-              <div className="absolute -bottom-4 -left-4 bg-white px-4 py-3 rounded-xl border border-slate-150 shadow-xs max-w-[190px] z-10 text-xs hidden sm:block font-sans">
-                <div className="flex gap-0.5 text-amber-400 mb-1">
-                  {"★".repeat(5)}
+              {/* Floating review card with Bunda image */}
+              <div className="absolute -bottom-4 -left-4 bg-white p-3 rounded-2xl border border-slate-150 shadow-md max-w-[210px] z-10 text-xs hidden sm:flex items-center gap-2.5 font-sans">
+                <img 
+                  src={imgBundaRania} 
+                  alt="Bunda Rania" 
+                  className="w-10 h-10 rounded-full object-cover border border-rose-100 bg-rose-50 shrink-0" 
+                  referrerPolicy="no-referrer"
+                />
+                <div className="text-left font-sans">
+                  <div className="flex gap-0.5 text-amber-400 mb-0.5">
+                    {"★".repeat(5)}
+                  </div>
+                  <p className="text-slate-600 text-[10px] italic leading-tight">"Fatih makan salmon Saffa lahap sekali!"</p>
+                  <span className="text-[9px] text-[#e5007d] font-bold block mt-0.5">— Bunda Rania</span>
                 </div>
-                <p className="text-slate-600 text-[11px] italic">"Kinara makan salmon Saffa lahap sekali!"</p>
-                <span className="text-[10px] text-slate-400 block text-right mt-1">— Bunda Kinara</span>
               </div>
 
             </div>
