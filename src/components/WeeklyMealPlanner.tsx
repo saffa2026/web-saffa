@@ -32,6 +32,7 @@ export default function WeeklyMealPlanner({ lastSelectedMenuId, clearLastSelecte
 
   const [motherName, setMotherName] = useState("");
   const [babyName, setBabyName] = useState("");
+  const [customerPhone, setCustomerPhone] = useState("");
   const [address, setAddress] = useState("");
   const [deliveryPref, setDeliveryPref] = useState("Pagi Saja (06.00 - 10.00)");
   const [selectedStandId, setSelectedStandId] = useState("s1");
@@ -186,8 +187,9 @@ export default function WeeklyMealPlanner({ lastSelectedMenuId, clearLastSelecte
       
       let text = `*FORM PENDAFTARAN BERLANGGANAN SAFFA*\n`;
       text += `_MPASI MASA KINI - Resmi BPJPH sejak 2022_\n\n`;
-      text += `Nama Bunda: ${motherName || "-"}\n`;
-      text += `Nama Si Kecil: ${babyName || "-"}\n`;
+      text += `Nama Bunda: *${motherName || "-"}*\n`;
+      text += `Nama Si Kecil: *${babyName || "-"}*\n`;
+      text += `No. HP / WA: *${customerPhone || "-"}*\n`;
       text += `Alamat Pengantaran: ${address || "-"}\n`;
       text += `Tujuan Cabang Stand: ${SAFFA_STANDS.find(s => s.id === selectedStandId)?.name || "-"}\n\n`;
       text += `*DETAIL PAKET BERLANGGANAN:*\n`;
@@ -213,8 +215,9 @@ export default function WeeklyMealPlanner({ lastSelectedMenuId, clearLastSelecte
       return text;
     } else {
       let text = `*FORM PEMESANAN SAFFA BUBUR BAYI*\n`;
-      text += `Nama Bunda: ${motherName || "-"}\n`;
-      text += `Nama Si Kecil: ${babyName || "-"}\n`;
+      text += `Nama Bunda: *${motherName || "-"}*\n`;
+      text += `Nama Si Kecil: *${babyName || "-"}*\n`;
+      text += `No. HP / WA: *${customerPhone || "-"}*\n`;
       text += `Alamat Pengiriman: ${address || "-"}\n`;
       text += `Metode Antar: ${deliveryPref}\n\n`;
       text += `Pola Jam Antar Pesanan Harian: *Hanya Pagi Saja (06.00 - 10.00 WIB)*\n\n`;
@@ -609,6 +612,17 @@ export default function WeeklyMealPlanner({ lastSelectedMenuId, clearLastSelecte
                 </div>
 
                 <div className="space-y-1">
+                  <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">Nomor HP / WhatsApp Bunda</label>
+                  <input
+                    type="tel"
+                    value={customerPhone}
+                    onChange={(e) => setCustomerPhone(e.target.value)}
+                    placeholder="Contoh: 081234567890"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 focus:border-slate-400 rounded-lg text-xs text-slate-800 outline-hidden font-semibold shadow-inner"
+                  />
+                </div>
+
+                <div className="space-y-1">
                   <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">Alamat Pengantaran</label>
                   <textarea
                     value={address}
@@ -834,7 +848,7 @@ export default function WeeklyMealPlanner({ lastSelectedMenuId, clearLastSelecte
               <button
                 type="button"
                 onClick={handleCopyToClipboard}
-                disabled={activeTab === "custom" ? scheduledMeals.length === 0 : (!motherName || !babyName || !address)}
+                disabled={activeTab === "custom" ? scheduledMeals.length === 0 : (!motherName || !babyName || !customerPhone || !address)}
                 className="w-full py-2.5 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 disabled:opacity-30 rounded-lg text-xs font-semibold cursor-pointer transition flex items-center justify-center gap-1.5"
               >
                 <Copy size={12} />
@@ -844,7 +858,7 @@ export default function WeeklyMealPlanner({ lastSelectedMenuId, clearLastSelecte
               <button
                 type="button"
                 onClick={handleSendToWhatsApp}
-                disabled={activeTab === "custom" ? scheduledMeals.length === 0 : (!motherName || !babyName || !address)}
+                disabled={activeTab === "custom" ? scheduledMeals.length === 0 : (!motherName || !babyName || !customerPhone || !address)}
                 className="w-full py-3 bg-[#e5007d] disabled:opacity-40 text-white text-xs font-bold rounded-lg hover:bg-[#c20067] transition duration-200 cursor-pointer flex items-center justify-center gap-1.5 text-center"
               >
                 <Share2 size={12} fill="white" />
